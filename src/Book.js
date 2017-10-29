@@ -28,10 +28,7 @@ class Book extends Component {
           <div className="book-top">
             <div className="book-cover" style={style} />
             <div className="book-shelf-changer">
-              <Selector
-                moveShelf={moveShelf}
-                book={this.props.book}
-              />
+              <Selector moveShelf={moveShelf} book={this.props.book} />
             </div>
           </div>
           <div className="book-title">{title}</div>

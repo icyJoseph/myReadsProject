@@ -4,7 +4,9 @@ import Book from "./Book";
 class Shelf extends Component {
   render() {
     const { books, shelfName, moveShelf } = this.props;
-    const booksList = books.map(book => <Book key={book.id} book={book} moveShelf={moveShelf} />);
+    const booksList = books.map(book => (
+      <Book key={book.id} book={book} moveShelf={moveShelf} />
+    ));
     return booksList.length > 0 ? (
       <div>
         <div className="bookshelf">
