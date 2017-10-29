@@ -10,21 +10,25 @@ class SearchBooks extends Component {
 
   updateQuery = query => {
     this.setState({ query });
-    this.props.search(query);
+    if (query) {
+      this.props.search(query);
+    }
   };
 
   render() {
     const { query } = this.state;
-    const { response, moveShelf, clearQuery } = this.props;
-    const resultsFromSearch = response.length !== 0
-      ? response.map((book, i) => (
-          <Book key={i} book={book} moveShelf={moveShelf} />
-        ))
-      : null;
+    const { response, error, moveShelf, clearQuery } = this.props;
+    const resultsFromSearch = error ? (
+      <div>{error}</div>
+    ) : (
+      response.map((book, i) => (
+        <Book key={i} book={book} moveShelf={moveShelf} />
+      ))
+    );
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <Link to="/" className="close-search" onClick={() => clearQuery() }>
+          <Link to="/" className="close-search" onClick={() => clearQuery()}>
             Close
           </Link>
           <div className="search-books-input-wrapper">
