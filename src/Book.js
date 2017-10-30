@@ -1,12 +1,18 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Selector from "./BookControl";
 
 class Book extends Component {
+  static propTypes = {
+    moveShelf: PropTypes.func.isRequired,
+    book: PropTypes.shape({
+      title: PropTypes.String,
+      authors: PropTypes.array
+    })
+  };
+
   render() {
-    const {
-      book: { title, authors, imageLinks },
-      moveShelf
-    } = this.props;
+    const { book: { title, authors, imageLinks }, moveShelf } = this.props;
     const style = {
       width: 128,
       height: 193,
