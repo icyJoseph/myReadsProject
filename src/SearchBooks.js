@@ -12,6 +12,8 @@ class SearchBooks extends Component {
     this.setState({ query });
     if (query) {
       this.props.search(query);
+    } else { 
+      this.props.clearQuery();
     }
   };
 
@@ -41,7 +43,7 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid">{resultsFromSearch}</ol>
+          <ol className="books-grid">{query && resultsFromSearch}</ol>
         </div>
       </div>
     );
