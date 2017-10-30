@@ -10,10 +10,10 @@ const Selector = ({ props, book, moveShelf }) => {
   ));
   return (
     <select
-      defaultValue={book.shelf}
+      value={book.shelf}
       onChange={e => moveShelf(book, e.target.value)}
     >
-      <option value="none" disabled>
+      <option value="handle" disabled>
         Move to...
       </option>
       {options}
