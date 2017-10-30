@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import * as BooksAPI from "./BooksAPI";
 import { Route } from "react-router-dom";
+import _ from "lodash";
+import * as BooksAPI from "./BooksAPI";
 import SearchBooks from "./SearchBooks";
 import Shelves from "./Shelves";
 import * as typeOfShelf from "./constants";
@@ -43,7 +44,7 @@ class BooksApp extends Component {
       .catch(err => console.log(err));
   };
 
-  search = query => {
+  search = _.debounce(query => {
     BooksAPI.search(query, 1)
       .then(books => {
         const { error } = books;
@@ -64,7 +65,7 @@ class BooksApp extends Component {
         }
       })
       .catch(err => console.log(err));
-  };
+  }, 500);
 
   clearQuery = () => {
     this.setState({ response: [] });
