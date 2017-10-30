@@ -22,6 +22,16 @@ class BooksApp extends Component {
     BooksAPI.update(book, newShelf)
       .then(resp =>
         BooksAPI.get(book.id).then(updatedBook => {
+          const [bookInResponse] = this.state.response.filter(
+            book => book.id === updatedBook.id
+          );
+          if (bookInResponse) {
+            this.setState(prevState => ({
+              response: prevState.response.map(
+                book => (book.id === updatedBook.id ? updatedBook : book)
+              )
+            }));
+          }
           const [BookInState] = this.state.books.filter(
             book => book.id === updatedBook.id
           );
