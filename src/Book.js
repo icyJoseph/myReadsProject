@@ -4,7 +4,7 @@ import Selector from "./BookControl";
 class Book extends Component {
   render() {
     const {
-      book: { title, authors, imageLinks, shelf },
+      book: { title, authors, imageLinks },
       moveShelf
     } = this.props;
     const style = {
