@@ -1,7 +1,7 @@
 import React from "react";
 import * as typeOfShelf from "./constants";
 
-const Selector = ({ props, book, moveShelf }) => {
+const Selector = ({ book, moveShelf }) => {
   const shelves = Object.keys(typeOfShelf);
   const options = shelves.map((shelf, i) => (
     <option key={i} value={shelf}>
