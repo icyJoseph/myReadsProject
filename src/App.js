@@ -78,6 +78,7 @@ class BooksApp extends Component {
   }, 500);
 
   clearQuery = () => {
+    this.search.cancel();
     this.setState({ response: [] });
   };
 
